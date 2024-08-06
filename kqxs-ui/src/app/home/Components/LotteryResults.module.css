@@ -1,0 +1,386 @@
+/* Base styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.resultsBox {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+}
+
+.resultsTitle {
+  color: #080808ee;
+  margin-bottom: 20px;
+  font-size: 20px; /* Adjusted font size */
+  font-weight: bold;
+  line-height: 1.4; /* Adjust line height for better spacing */
+}
+
+.resultsTitle span {
+  display: block; /* Ensure each line of the title appears on a new line */
+  margin-bottom: 5px; /* Adjust spacing between lines */
+}
+
+.redText {
+  font-size: 15px; /* Font size for the red text */
+  color: #d9534f; /* Red color for the text */
+  font-weight: bold;
+}
+
+.link {
+  font-size: 15px; /* Font size for the links */
+  color: #0628ec; /* Color for the links */
+  font-weight: normal; /* Optional: Adjust weight if needed */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.resultsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resultsTable thead tr {
+  background-color: #f7f7f7;
+}
+
+.resultsTable th,
+.resultsTable td {
+  padding: 12px;
+  border: 0.1px solid #c9c9c9;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+}
+
+.resultsTable th {
+  background-color: #fff;
+  color: #000;
+}
+
+.resultsTable tbody tr:nth-child(even) {
+  background-color: rgb(239, 246, 254);
+}
+
+.resultsNumber {
+  display: inline-block;
+  margin-right: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.resultsNumberRow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: auto;
+  line-height: 2;
+}
+
+/* Add a class for red numbers */
+.redNumber {
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Adjust the column width for the "Giải" column */
+.prizeColumn {
+  width: 150px;
+}
+
+/* Responsive styles */
+@media (max-width: 1440px) {
+  .resultsBox {
+    padding: 18px;
+  }
+
+  .resultsTitle {
+    font-size: 19px; /* Slightly smaller font size */
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 11px; /* Slightly smaller padding */
+    font-size: 15px; /* Smaller font size */
+  }
+
+  .resultsNumber {
+    font-size: 17px; /* Slightly smaller font size */
+  }
+
+  .spinningBall {
+    width: 28px; /* Slightly smaller size for laptop */
+    height: 28px; /* Slightly smaller size for laptop */
+    animation: spin 2.5s linear infinite; /* Adjust speed for laptop */
+  }
+
+  .ballWrapper {
+    height: 45px; /* Adjust height to fit smaller spinning ball */
+    padding: 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .resultsBox {
+    padding: 15px;
+  }
+
+  .resultsTitle {
+    font-size: 18px; /* Slightly smaller font size */
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 10px; /* Slightly smaller padding */
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .resultsNumber {
+    font-size: 16px; /* Slightly smaller font size */
+  }
+
+  .spinningBall {
+    width: 25px; /* Slightly smaller size for tablet */
+    height: 25px; /* Slightly smaller size for tablet */
+    animation: spin 2s linear infinite; /* Adjust speed for tablet */
+  }
+
+  .ballWrapper {
+    height: 40px; /* Adjust height to fit smaller spinning ball */
+  }
+}
+
+@media (max-width: 768px) {
+  .resultsBox {
+    padding: 10px;
+  }
+
+  .resultsTitle {
+    font-size: 16px; /* Further reduce font size */
+  }
+
+  .redNumber {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 8px; /* Smaller padding */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .resultsNumber {
+    font-size: 14px; /* Further reduce font size */
+    margin-right: 5px; /* Adjust margin */
+  }
+
+  .resultsNumberRow {
+    flex-direction: row; /* Keep numbers in a row */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Center align items vertically */
+  }
+
+  .prizeColumn {
+    width: 120px; /* Make "Giải" column narrower */
+  }
+
+  .resultsTable td {
+    text-align: center; /* Center align numbers */
+  }
+
+  .spinningBall {
+    width: 20px; /* Slightly smaller size for mobile */
+    height: 20px; /* Slightly smaller size for mobile */
+    animation: spin 1.5s linear infinite; /* Adjust speed for mobile */
+  }
+
+  .ballWrapper {
+    height: 35px; /* Adjust height to fit smaller spinning ball */
+  }
+}
+
+@media (max-width: 480px) {
+  .resultsBox {
+    padding: 5px; /* Minimal padding */
+  }
+
+  .redNumber {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .resultsTitle {
+    font-size: 14px; /* Smallest font size for title */
+  }
+
+  .resultsTitle span {
+    font-size: 12px; /* Smaller font size for each line */
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 6px; /* Minimal padding */
+    font-size: 10px; /* Smallest font size for table */
+  }
+
+  .resultsNumber {
+    font-size: 10px; /* Smallest font size for numbers */
+    margin-right: 3px; /* Minimal margin */
+  }
+
+  .link {
+    font-size: 10px; /* Smallest font size for links */
+    line-height: 1.5; /* Adjust line height */
+  }
+
+  .resultsNumberRow {
+    flex-direction: row; /* Keep numbers in a row */
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: center; /* Center align items vertically */
+    line-height: 1.5; /* Adjust line height */
+  }
+
+  .prizeColumn {
+    width: 100px; /* Further reduce "Giải" column width */
+  }
+
+  .spinningBall {
+    width: 15px; /* Smaller size for very small screens */
+    height: 15px; /* Smaller size for very small screens */
+    animation: spin 1s linear infinite; /* Faster spin for very small screens */
+  }
+
+  .ballWrapper {
+    height: 30px; /* Adjust height to fit even smaller spinning ball */
+  }
+}
+
+/* Add styles for the ball and its wrapper */
+.ballWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ball {
+  position: absolute;
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+  background-image: url("../../../assets/images//WorldIcon.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  animation: spin 3s linear infinite; /* Adjust speed as needed */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add this to your CSS file */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Add styles for the spinning ball */
+
+.spinningBall {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+  background: url("../../../assets/images/WorldIcon.png") no-repeat center
+    center; /* Update with your ball image */
+  background-size: cover;
+  animation: spin 2s linear infinite;
+  position: relative;
+}
+
+/* Ensure the ballWrapper positions the spinning ball correctly */
+.ballWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure it takes full width available */
+  height: 50px; /* Adjust to fit spinning ball size */
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .spinningBall {
+    width: 25px; /* Slightly smaller size for mobile */
+    height: 25px; /* Slightly smaller size for mobile */
+    animation: spin 1.5s linear infinite; /* Adjust speed for mobile */
+  }
+
+  .ballWrapper {
+    height: 40px; /* Adjust height to fit smaller spinning ball */
+  }
+}
+
+@media (max-width: 480px) {
+  .spinningBall {
+    width: 20px; /* Smaller size for very small screens */
+    height: 20px; /* Smaller size for very small screens */
+    animation: spin 1s linear infinite; /* Faster spin for very small screens */
+  }
+
+  .ballWrapper {
+    height: 30px; /* Adjust height to fit even smaller spinning ball */
+  }
+}
+
+/* Keyframes for spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Thêm các kiểu cho nút */
+.spinButton {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.spinButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

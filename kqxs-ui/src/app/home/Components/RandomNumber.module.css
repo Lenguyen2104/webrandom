@@ -1,0 +1,83 @@
+.numberContainer {
+  display: flex;
+  align-items: center;
+}
+
+.digitWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1px; /* Khoảng cách giữa các số */
+}
+
+/* Kích thước hình tròn */
+.circle {
+  position: absolute;
+  width: 30px; /* Đặt kích thước mặc định */
+  height: 30px; /* Đặt kích thước mặc định */
+  border-radius: 50%;
+  z-index: 1; /* Đặt z-index để hình tròn nằm dưới chữ số */
+  transition: opacity 0.3s ease; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+/* Màu sắc */
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+/* Kích thước chữ số */
+.digit {
+  font-size: 28px;
+  color: black;
+  z-index: 2;
+  position: relative;
+}
+
+/* Màu chữ khi quay ngẫu nhiên */
+.whiteText {
+  color: white;
+}
+
+.redNumber {
+  color: red; /* Áp dụng màu đỏ cho số */
+}
+
+/* Ẩn hình tròn sau khi quay xong */
+.hidden {
+  opacity: 0;
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 768px) {
+  .circle {
+    width: 20px; /* Kích thước nhỏ hơn cho di động */
+    height: 20px; /* Kích thước nhỏ hơn cho di động */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .digit {
+    font-size: 1rem; /* Kích thước chữ nhỏ hơn cho di động */
+  }
+}
+
+/* Responsive cho các màn hình nhỏ hơn */
+@media (max-width: 480px) {
+  .circle {
+    width: 15px; /* Kích thước rất nhỏ cho các thiết bị nhỏ hơn */
+    height: 15px; /* Kích thước rất nhỏ cho các thiết bị nhỏ hơn */
+  }
+
+  .digit {
+    font-size: 0.8rem; /* Kích thước chữ nhỏ hơn cho các thiết bị nhỏ hơn */
+  }
+
+  .digitWrapper {
+    margin: 0 1px; /* Khoảng cách nhỏ hơn giữa các số trên thiết bị nhỏ */
+  }
+}
