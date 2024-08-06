@@ -2,8 +2,8 @@
 
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import getLotteryData from "../../../libs/getLotteryData";
-import ws from "../../../socket";
+import postLotteryData from "../../../libs/postLotteryData";
+import ws from "../../../webSocketClient";
 import styles from "./LotteryResults.module.css";
 import RandomNumber from "./RandomNumber";
 
@@ -28,7 +28,7 @@ export default function LotteryResults({ data }) {
     ?.numbers[0];
   const allNumbers = calculateOrder();
 
-  const timeDown = 8000;
+  const timeDown = 6000;
 
   useEffect(() => {
     const updateData = (updatedData) => {
@@ -78,7 +78,7 @@ export default function LotteryResults({ data }) {
       setCurrentIndex(-1);
       setIsSpinning(true);
       try {
-        const newData = await getLotteryData();
+        const newData = await postLotteryData();
         setPrizes(newData);
       } catch (error) {
         console.error("Failed to fetch new data", error);
@@ -102,9 +102,9 @@ export default function LotteryResults({ data }) {
       rowClass += " " + styles.spaceAround;
     }
 
-    const renderBall = (number) => {
+    const renderBall = (number, index) => {
       return (
-        <div className={styles.ballWrapper}>
+        <div className={styles.ballWrapper} key={index}>
           {shownNumbers.has(number) ? (
             <RandomNumber number={number} duration={timeDown} />
           ) : (
@@ -131,7 +131,7 @@ export default function LotteryResults({ data }) {
 
     return (
       <div className={rowClass}>
-        {numbers.map((number, i) => renderBall(number, i))}
+        {numbers?.map((number, i) => renderBall(number, i))}
       </div>
     );
   };

@@ -24,7 +24,8 @@ export default function LotteryResults({ data }) {
   useEffect(() => {
     async function fetchData() {
       const data = await getLotteryDataForAdmin();
-      setNewData(data);
+      console.log("🚀 ~ fetchData ~ data:", data);
+      // setNewData(data);
     }
     fetchData();
   }, []);
@@ -49,6 +50,7 @@ export default function LotteryResults({ data }) {
 
     ws.onmessage = (event) => {
       const updatedData = JSON.parse(event.data);
+      console.log("🚀 ~ useEffect ~ updatedData:", updatedData);
       setPrizes(updatedData);
       setNewData(updatedData);
     };
@@ -305,7 +307,7 @@ export default function LotteryResults({ data }) {
 
     return (
       <div className={styles.resultsNumberRow}>
-        {numbers.map((number, i) => (
+        {numbers?.map((number, i) => (
           <span
             key={i}
             className={`${numberClass} ${
@@ -370,44 +372,27 @@ export default function LotteryResults({ data }) {
             </a>
           </span>
         </h2>
-        <table className={styles.resultsTable}>
-          <thead>
-            <tr>
-              <th className={styles.prizeColumn}>Giải</th>
-              <th>Kết quả</th>
-            </tr>
-          </thead>
-          <tbody>
-            {prizes.map((prize) => (
-              <tr key={prize.name}>
-                <td className={styles.prizeColumn}>{prize.name}</td>
-                <td>{renderNumbers(prize.numbers, prize.name)}</td>
+        {newData || prizes ? (
+          <div className={styles.waitingMessage}>đang đợi vòng quay thử...</div>
+        ) : (
+          <table className={styles.resultsTable}>
+            <thead>
+              <tr>
+                <th className={styles.prizeColumn}>Giải</th>
+                <th>Kết quả</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {prizes.map((prize) => (
+                <tr key={prize.name}>
+                  <td className={styles.prizeColumn}>{prize.name}</td>
+                  <td>{renderNumbers(prize.numbers, prize.name)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
 }
-
-// {isWaiting ? (
-//   <div className={styles.waitingMessage}>đang đợi vòng quay thử...</div>
-// ) : (
-//   <table className={styles.resultsTable}>
-//     <thead>
-//       <tr>
-//         <th className={styles.prizeColumn}>Giải</th>
-//         <th>Kết quả</th>
-//       </tr>
-//     </thead>
-//     <tbody>
-//       {prizes.map((prize) => (
-//         <tr key={prize.name}>
-//           <td className={styles.prizeColumn}>{prize.name}</td>
-//           <td>{renderNumbers(prize.numbers, prize.name)}</td>
-//         </tr>
-//       ))}
-//     </tbody>
-//   </table>
-// )}

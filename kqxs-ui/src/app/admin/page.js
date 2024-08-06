@@ -1,5 +1,5 @@
+import LotteryResultsAdmin from "./Components/LotteryResultsAdmin";
 import styles from "./admin.module.css";
-import LotteryResults from "./Components/LotteryResults";
 
 export default async function AdminPage() {
   // const dataLotteryDataForAdmin = await getLotteryDataForAdmin();
@@ -7,7 +7,8 @@ export default async function AdminPage() {
 
   return (
     <main className={styles.main}>
-      <LotteryResults data={dataLotteryDataForAdmin} />
+      <LotteryResultsAdmin data={dataLotteryDataForAdmin} />
+      {/* <LotteryResults data={dataLotteryDataForAdmin} /> */}
     </main>
   );
 }

@@ -5,10 +5,10 @@ const express = require("express");
 const router = express.Router();
 const lotteryController = require("./controllers/lotteryController");
 
-router.get("/get", lotteryController.getLotteryData);
+router.post("/generate", lotteryController.generateLotteryData);
 
-router.get("/get-data-admin", lotteryController.getAdminLotteryData);
+router.get("/results", lotteryController.getResultsLotteryData);
 
-router.post("/update-data", lotteryController.updateLotteryData);
+router.put("/update", lotteryController.updateLotteryData);
 
 module.exports = router;

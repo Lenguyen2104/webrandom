@@ -1,0 +1,264 @@
+/* Base styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+  flex-direction: column;
+}
+
+.resultsBox {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+}
+
+.resultsTitle {
+  color: #080808ee;
+  margin-bottom: 20px;
+  font-size: 20px; /* Adjusted font size */
+  font-weight: bold;
+  line-height: 1.4; /* Adjust line height for better spacing */
+}
+
+.resultsTitle span {
+  display: block; /* Ensure each line of the title appears on a new line */
+  margin-bottom: 5px; /* Adjust spacing between lines */
+}
+
+.redText {
+  font-size: 15px; /* Font size for the red text */
+  color: #d9534f; /* Red color for the text */
+  font-weight: bold;
+}
+
+.link {
+  font-size: 15px; /* Font size for the links */
+  color: #0628ec; /* Color for the links */
+  font-weight: normal; /* Optional: Adjust weight if needed */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.resultsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resultsTable thead tr {
+  background-color: #f7f7f7;
+}
+
+.resultsTable th,
+.resultsTable td {
+  padding: 12px;
+  border: 0.1px solid #c9c9c9;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+}
+
+.resultsTable th {
+  background-color: #fff;
+  color: #000;
+}
+
+.resultsTable tbody tr:nth-child(even) {
+  background-color: rgb(239, 246, 254);
+}
+
+.resultsNumber {
+  display: inline-block;
+  margin-right: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.resultsNumberRow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: auto;
+  line-height: 2;
+}
+
+/* Add a class for red numbers */
+.redNumber {
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Adjust the column width for the "Giải" column */
+.prizeColumn {
+  width: 150px;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .resultsBox {
+    padding: 15px;
+  }
+
+  .resultsTitle {
+    font-size: 18px; /* Slightly smaller font size */
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 10px; /* Slightly smaller padding */
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .resultsNumber {
+    font-size: 16px; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .resultsBox {
+    padding: 10px;
+  }
+
+  .resultsTitle {
+    font-size: 16px; /* Further reduce font size */
+  }
+
+  .redNumber {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 8px; /* Smaller padding */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .resultsNumber {
+    font-size: 14px; /* Further reduce font size */
+    margin-right: 5px; /* Adjust margin */
+  }
+
+  .resultsNumberRow {
+    flex-direction: row; /* Keep numbers in a row */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Center align items vertically */
+  }
+
+  .prizeColumn {
+    width: 120px; /* Make "Giải" column narrower */
+  }
+
+  .resultsTable td {
+    text-align: center; /* Center align numbers */
+  }
+}
+
+@media (max-width: 480px) {
+  .resultsBox {
+    padding: 5px; /* Minimal padding */
+  }
+
+  .redNumber {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .resultsTitle {
+    font-size: 14px; /* Smallest font size for title */
+  }
+
+  .resultsTitle span {
+    font-size: 12px; /* Smaller font size for each line */
+  }
+
+  .resultsTable th,
+  .resultsTable td {
+    padding: 6px; /* Minimal padding */
+    font-size: 10px; /* Smallest font size for table */
+  }
+
+  .resultsNumber {
+    font-size: 10px; /* Smallest font size for numbers */
+    margin-right: 3px; /* Minimal margin */
+  }
+
+  .link {
+    font-size: 10px; /* Smallest font size for links */
+    line-height: 1.5; /* Adjust line height */
+  }
+
+  .resultsNumberRow {
+    flex-direction: row; /* Keep numbers in a row */
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: center; /* Center align items vertically */
+    line-height: 1.5; /* Adjust line height */
+  }
+
+  .prizeColumn {
+    width: 100px; /* Further reduce "Giải" column width */
+  }
+}
+
+.editButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 1px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.editButton:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .editButton {
+    font-size: 10px; /* Smaller font size */
+    padding: 2px 4px; /* Smaller padding */
+  }
+}
+
+/* Styles for the time indicator */
+.timeIndicator {
+  font-size: 8px;
+  color: #fb6a6a;
+  margin-left: 4px;
+}
+
+/* Add this to LotteryResults.module.css */
+
+.yellowBackground {
+  background-color: yellow;
+  padding: 0 4px; /* Adjust padding to ensure the background color is visible */
+  border-radius: 4px; /* Optional: for rounded corners */
+}
+
+.waitingMessage {
+  width: "100%";
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+  font-weight: bold;
+}
