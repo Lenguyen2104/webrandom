@@ -15,7 +15,8 @@
 // }
 
 export const putLotteryUpdate = async (data) => {
-  return fetch("http://localhost:3001/api/lottery/update", {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  return fetch(`${BASE_URL}/api/lottery/update`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -197,7 +197,8 @@ export default function LotteryResultsAdmin({ data }) {
     setEditingNumber(null);
 
     try {
-      const response = await fetch("http://localhost:3001/api/lottery/update", {
+      const BASE_URL = process.env.REACT_APP_BASE_URL;
+      const response = await fetch(`${BASE_URL}/api/lottery/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

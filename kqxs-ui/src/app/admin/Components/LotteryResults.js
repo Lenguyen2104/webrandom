@@ -137,7 +137,7 @@ export default function LotteryResults({ data }) {
   const postUpdateData = async (data) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/api/lottery/update-data",
+        `${process.env.LOCAL_HOST}/api/lottery/update-data`,
         {
           method: "POST",
           headers: {

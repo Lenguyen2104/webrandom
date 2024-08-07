@@ -1,5 +1,7 @@
 export default async function postLotteryData() {
-  const response = await fetch(`http://localhost:3001/api/lottery/generate`, {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const response = await fetch(`${BASE_URL}/api/lottery/generate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
