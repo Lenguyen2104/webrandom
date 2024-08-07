@@ -27,5 +27,3 @@ yarn start
 
 Open [http://localhost:3001](http://localhost:3001) server.
 Open [http://localhost:3002](http://localhost:3002) ws.
-
-````

@@ -4,7 +4,8 @@
 let ws;
 
 const connectWebSocket = () => {
-  ws = new WebSocket("ws://localhost:3002/admin");
+  // const WB_SOCKET = process.env.REACT_APP_WB_SOCKET;
+  ws = new WebSocket(`ws://103.54.153.110/socket/admin`);
 
   ws.onopen = () => {
     // console.log("Connected to WebSocket server as admin");
