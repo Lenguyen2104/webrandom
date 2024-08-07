@@ -7,10 +7,11 @@ const http = require("http");
 const bodyParser = require("body-parser");
 const { initWebSocketServer } = require("./wsManager");
 const lotteryRoutes = require("./api/routes");
+require("dotenv").config();
 
 const app = express();
-const httpPort = 3001;
-const wsPort = 3002;
+const httpPort = process.env.HTTP_PORT || 3001;
+const wsPort = process.env.WS_PORT || 3002;
 
 // Middleware to parse JSON body
 app.use(cors(null, true)); // CORS middleware

@@ -14,7 +14,8 @@ const initWebSocketServer = (port) => {
   wss.on("connection", (ws, req) => {
     console.log("Client connected");
     // Identify client type based on the URL path
-    const pathname = new URL(req.url, `ws://localhost:${port}`).pathname;
+    const pathname = new URL(req.url, `ws://${process.env.HOST_NAME}:${port}`)
+      .pathname;
 
     if (pathname === "/admin") {
       adminClients.push(ws);
