@@ -7,7 +7,7 @@ export default async function postLotteryData() {
   });
 
   if (!response.ok) {
-    throw new Error("failed to fetch user");
+    // throw new Error("failed to fetch user");
   }
 
   return response.json();

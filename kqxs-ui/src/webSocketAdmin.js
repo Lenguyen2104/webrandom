@@ -12,20 +12,11 @@ const connectWebSocket = () => {
   };
 
   ws.onmessage = (event) => {
-    // try {
-    //   const updatedData = JSON.parse(event.data);
-
-    //   // if (typeof window !== "undefined" && window.handleAdminWebSocketData) {
-    //   //   window.handleAdminWebSocketData(updatedData);
-    //   // }
-    // } catch (error) {
-    //   console.error("Error parsing WebSocket data:", error);
-    // }
-    console.log("Received WebSocket message:", event.data);
+    // console.log("Received WebSocket message:", event.data);
 
     try {
       const updatedData = JSON.parse(event.data);
-      console.log("Parsed WebSocket data:", updatedData);
+      // console.log("Parsed WebSocket data:", updatedData);
 
       // if (typeof window !== "undefined" && window.handleAdminWebSocketData) {
       //   window.handleAdminWebSocketData(updatedData);

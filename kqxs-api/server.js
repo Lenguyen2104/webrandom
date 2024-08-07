@@ -14,8 +14,8 @@ const wsPort = 3002;
 
 // Middleware to parse JSON body
 app.use(cors(null, true)); // CORS middleware
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Initialize WebSocket server
 initWebSocketServer(wsPort);
@@ -38,5 +38,5 @@ app.use((err, req, res, next) => {
 const server = http.createServer(app);
 
 server.listen(httpPort, () => {
-  console.log(`Server running at http://localhost:${httpPort}`);
+  // console.log(`Server running at http://localhost:${httpPort}`);
 });

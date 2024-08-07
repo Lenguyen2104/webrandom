@@ -7,7 +7,8 @@ export default async function getLotteryDataForAdmin() {
   });
 
   if (!response.ok) {
-    throw new Error("failed to fetch user");
+    // throw new Error("failed to fetch user");
+    console.log("failed to fetch user");
   }
 
   return response.json();
