@@ -1,10 +1,16 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  background-color: white;
+} */
+.main {
+  display: flex; /* Sử dụng Flexbox để đảm bảo các phần tử con có thể được căn chỉnh */
+  min-height: 100vh; /* Chiều cao tối thiểu của phần tử sẽ là chiều cao của màn hình */
+  width: 100vw; /* Chiều rộng của phần tử sẽ là chiều rộng của màn hình */
   background-color: white;
 }
 

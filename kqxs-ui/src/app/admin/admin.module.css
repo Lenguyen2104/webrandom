@@ -233,7 +233,7 @@
 /* Responsive styles */
 @media (max-width: 1024px) {
   .main {
-    padding: 4rem; /* Adjust padding for tablets and smaller screens */
+    padding: 1rem; /* Adjust padding for tablets and smaller screens */
   }
 }
 

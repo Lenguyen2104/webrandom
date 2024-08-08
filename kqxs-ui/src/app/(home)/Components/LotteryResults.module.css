@@ -1,24 +1,60 @@
 /* Base styles */
-.container {
-  display: flex;
-  justify-content: center;
+
+.buttonDanger {
+  border-width: 1px;
+  border-color: #000;
+  color: #000;
+  height: 40px;
+  text-wrap: nowrap;
+  display: inline-block;
+  padding: 0 16px;
+  line-height: 40px;
+  background-color: rgb(237, 235, 235);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 2px;
+  /* -webkit-border-radius: 2px; */
+}
+
+.nameMienBac {
+  color: #000;
+}
+
+.formGroup {
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
+  float: left;
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+  display: table;
+}
+
+.formGroup:last-child {
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.container {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* min-height: 100vh; */
+  /* padding: 20px; */
+  /* box-sizing: border-box; */
+  /* background-color: #f9f9f9; */
   font-size: 0.85rem;
-  max-width: var(--max-width);
+  color: #000;
+  /* max-width: var(--max-width); */
   width: 100%;
 }
 
 .resultsBox {
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+  /* padding: 20px; */
+  /* border-radius: 10px; */
+  /* text-align: center; */
   width: 100%;
   max-width: 800px;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .resultsTitle {
@@ -92,7 +128,6 @@
   line-height: 2;
 }
 
-/* Add a class for red numbers */
 .redNumber {
   color: red;
   font-size: 28px;
@@ -107,7 +142,7 @@
 /* Responsive styles */
 @media (max-width: 1440px) {
   .resultsBox {
-    padding: 18px;
+    /* padding: 18px; */
   }
 
   .resultsTitle {
@@ -138,7 +173,7 @@
 
 @media (max-width: 1024px) {
   .resultsBox {
-    padding: 15px;
+    /* padding: 15px; */
   }
 
   .resultsTitle {
@@ -168,7 +203,16 @@
 
 @media (max-width: 768px) {
   .resultsBox {
-    padding: 10px;
+    /* padding: 10px; */
+  }
+
+  .bodyCell {
+    display: table-cell;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px;
+    color: #000;
+    font-size: 12px;
   }
 
   .resultsTitle {
@@ -219,7 +263,16 @@
 
 @media (max-width: 480px) {
   .resultsBox {
-    padding: 5px; /* Minimal padding */
+    /* padding: 5px;  */
+  }
+
+  .bodyCell {
+    display: table-cell;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px;
+    color: #000;
+    font-size: 12px;
   }
 
   .redNumber {
@@ -345,6 +398,15 @@
   .ballWrapper {
     height: 40px; /* Adjust height to fit smaller spinning ball */
   }
+
+  .bodyCell {
+    display: table-cell;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px;
+    color: #000;
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -356,6 +418,15 @@
 
   .ballWrapper {
     height: 30px; /* Adjust height to fit even smaller spinning ball */
+  }
+
+  .bodyCell {
+    display: table-cell;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px;
+    color: #000;
+    font-size: 12px;
   }
 }
 
@@ -371,16 +442,142 @@
 
 /* Thêm các kiểu cho nút */
 .spinButton {
-  margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
+  /* padding: 5px 10px; */
+  text-wrap: nowrap;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  background-color: #ed1c25;
+  height: 40px;
+  width: 100px;
+  border-radius: 1;
+  line-height: 40px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
 }
 
 .spinButton:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
+}
+
+.spinButtonSelect {
+  text-wrap: nowrap;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  border-width: 0.1px;
+  border-color: #605e5e;
+  height: 40px;
+  width: 100px;
+  line-height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.sectionHeader {
+  flex-direction: row;
+  display: flex;
+  float: left;
+  width: 100%;
+  position: relative;
+  background: white;
+  border-bottom: 0;
+  padding: 8px 10px;
+  text-align: center;
+  justify-self: start;
+}
+
+.numberSpin {
+  text-align: center;
+  width: 100%;
+  float: left;
+  padding: 10px;
+}
+
+.lotteryTableContainer {
+  width: 100%;
+}
+
+.options {
+  text-align: center;
+  width: 100%;
+  float: left;
+  padding: 20px;
+}
+
+.optionLabel {
+  margin-left: 15px;
+  margin-right: 20px;
+  color: #000;
+  font-size: 14px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.headerRow,
+.bodyRow {
+  display: table-row;
+}
+
+.headerCell,
+.bodyCell {
+  display: table-cell;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 6px;
+  color: #000;
+  font-size: 12px;
+}
+
+.tableTitle {
+  font-weight: bold;
+  color: "#0029ad";
+}
+
+.radio1 {
+}
+
+.secondLine {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 15px; /* Font size for the red text */
+  color: #1104ca; /* Red color for the text */
+  font-weight: bold;
+}
+
+.lotteryTableContainer {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* đảm bảo các cột có chiều rộng bằng nhau */
+}
+
+.headerRow {
+  background-color: #f0f8ff;
+}
+
+.headerCell,
+.bodyCell {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+.bodyRow:nth-child(even) {
+  background-color: #f0f8ff; /* màu xanh nhạt cho các dòng chẵn */
+}
+
+.redText {
+  color: red;
 }
