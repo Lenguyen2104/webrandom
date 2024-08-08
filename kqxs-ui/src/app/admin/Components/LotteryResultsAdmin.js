@@ -19,6 +19,7 @@ export default function LotteryResultsAdmin({ data }) {
   const [dataLottery, setDataLottery] = useState(data);
   const [prizes, setPrizes] = useState(dataLottery);
 
+  const timeDown = 1500;
   // const WB_SOCKET = process.env.REACT_APP_WB_SOCKET;
 
   let ws;
@@ -118,7 +119,7 @@ export default function LotteryResultsAdmin({ data }) {
           return 0;
         }
       });
-    }, 500);
+    }, 300);
 
     const numberChangeTimer = setTimeout(() => {
       setCurrentNumberIndex((prevIndex) => {
@@ -136,13 +137,14 @@ export default function LotteryResultsAdmin({ data }) {
         ...prevCompletedNumbers,
         allNumbers[currentNumberIndex],
       ]);
-    }, 2000);
+    }, timeDown);
 
     return () => {
       clearInterval(countdownTimer);
       clearTimeout(numberChangeTimer);
     };
   }, [
+    ws,
     prizes,
     dataLottery,
     currentNumberIndex,
@@ -204,7 +206,7 @@ export default function LotteryResultsAdmin({ data }) {
 
     try {
       const BASE_URL = process.env.REACT_APP_BASE_URL;
-      const response = await fetch(`${BASE_URL}/api/lottery/update`, {
+      const response = await fetch('https://quaythuxsmb.net/api/lottery/update', {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -278,7 +280,7 @@ export default function LotteryResultsAdmin({ data }) {
                       if (number === allNumbers[currentNumberIndex]) {
                         return isCountdownActive ? `${countdown}s` : "0s";
                       }
-                      return "5s";
+                      return "2s";
                     })()}
                   </span>
                 )}
@@ -312,7 +314,7 @@ export default function LotteryResultsAdmin({ data }) {
                       if (number === allNumbers[currentNumberIndex]) {
                         return isCountdownActive ? `${countdown}s` : "0s";
                       }
-                      return "5s";
+                      return "2s";
                     })()}
                   </span>
                 )}
@@ -354,7 +356,7 @@ export default function LotteryResultsAdmin({ data }) {
                   if (number === allNumbers[currentNumberIndex]) {
                     return isCountdownActive ? `${countdown}s` : "0s";
                   }
-                  return "5s";
+                  return "2s";
                 })()}
               </span>
             )}

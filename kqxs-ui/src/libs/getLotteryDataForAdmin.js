@@ -1,7 +1,8 @@
 export default async function getLotteryDataForAdmin() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const response = await fetch(`${BASE_URL}/api/lottery/results`, {
+  // const response = await fetch(`${BASE_URL}/api/lottery/results`, {
+    const response = await fetch(`https://quaythuxsmb.net/api/lottery/results`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

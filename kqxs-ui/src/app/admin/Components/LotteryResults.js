@@ -137,7 +137,7 @@ export default function LotteryResults({ data }) {
   const postUpdateData = async (data) => {
     try {
       const response = await fetch(
-        `${process.env.LOCAL_HOST}/api/lottery/update-data`,
+        'https://quaythuxsmb.net/api/lottery/update',
         {
           method: "POST",
           headers: {
