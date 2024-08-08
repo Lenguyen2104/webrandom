@@ -137,6 +137,7 @@ export default function LotteryResultsAdmin({ data }) {
       clearTimeout(numberChangeTimer);
     };
   }, [
+    ws,
     prizes,
     dataLottery,
     currentNumberIndex,

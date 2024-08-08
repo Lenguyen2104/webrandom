@@ -11,20 +11,45 @@ LotteryResults.propTypes = {
   data: PropTypes.array.isRequired,
 };
 
+const getLastTwoDigits = (number) => {
+  return number.slice(-2);
+};
 export default function LotteryResults({ data }) {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [shownNumbers, setShownNumbers] = useState(new Set());
   const [isSpinning, setIsSpinning] = useState(false);
   const [prizes, setPrizes] = useState(data);
+  const [lotteryData, setLotteryData] = useState([]);
+
+  // Flatten the data to get a sequential array of last two digits
+  const flattenedData = lotteryData?.flatMap((category) =>
+    category.numbers.map((number) => getLastTwoDigits(number))
+  );
+
+  // Initialize data structure for matched pairs
+  let headColumns = Array.from({ length: 10 }, () => []);
+  let tailColumns = Array.from({ length: 10 }, () => []);
+
+  // Populate the headColumns and tailColumns
+  flattenedData.forEach((digits) => {
+    const first = digits[0];
+    const last = digits[1];
+    headColumns[first].push(last);
+    tailColumns[last].push(first);
+  });
+
+  // Convert arrays to comma-separated strings
+  headColumns = headColumns.map((arr) => arr.join(", "));
+  tailColumns = tailColumns.map((arr) => arr.join(", "));
 
   const calculateOrder = () => {
-    const numbers = [...prizes.flatMap((prize) => prize.numbers)];
+    const numbers = [...prizes?.flatMap((prize) => prize.numbers)];
     const firstCycleNumbers = numbers.filter((num) => num !== specialNumber);
     const secondCycleNumbers = [specialNumber];
     return [...firstCycleNumbers, ...secondCycleNumbers];
   };
 
-  const specialNumber = prizes.find((prize) => prize.name === "Đặc biệt")
+  const specialNumber = prizes?.find((prize) => prize.name === "Đặc biệt")
     ?.numbers[0];
   const allNumbers = calculateOrder();
 
@@ -69,6 +94,7 @@ export default function LotteryResults({ data }) {
         });
       }, timeDown);
     }
+
     return () => clearInterval(interval);
   }, [isSpinning, allNumbers]);
 
@@ -80,6 +106,7 @@ export default function LotteryResults({ data }) {
       try {
         const newData = await postLotteryData();
         setPrizes(newData);
+        setLotteryData(newData);
       } catch (error) {
         console.error("Failed to fetch new data", error);
       }
@@ -138,45 +165,122 @@ export default function LotteryResults({ data }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resultsBox}>
-        <h2 className={styles.resultsTitle}>
-          <span className={styles.secondLine}>Xổ số Miền Bắc (KQXS MB)</span>
-          <span className={`${styles.secondLine} ${styles.redText}`}>
-            XSMB (Nam Định) Đang quay thưởng
-          </span>
-          <span className={styles.secondLine}>
-            <a href="/xsmb" className={styles.link}>
-              XSMB
-            </a>{" "}
-            /
-            <a href="/xsmb" className={styles.link}>
-              XSMB
-            </a>{" "}
-            /
-            <a href="/xsmb/thu-7-03-08-2024" className={styles.link}>
-              Thứ 7 XSMB 03/08/2024 (Nam Định)
-            </a>
-          </span>
+      <div className={styles.formGroup}>
+        {/* <div className="btn-item"> */}
+        <div className="btn-item2 fixw">
+          <button className={styles.buttonDanger} disabled={isSpinning}>
+            Miền Bắc
+          </button>
+        </div>
+        <div className="btn-item2 fixw">
           <button
-            className={styles.spinButton}
             onClick={handleButtonClick}
+            className="btn btn-danger"
             disabled={isSpinning}
           >
             {isSpinning ? "Đang quay thử" : "Quay thử"}
           </button>
-        </h2>
-        <table className={styles.resultsTable}>
+        </div>
+      </div>
+      <table className={styles.resultsTable}>
+        <thead>
+          <tr>
+            <th className={styles.prizeColumn}>Giải</th>
+            <th>Kết quả</th>
+          </tr>
+        </thead>
+        <tbody>
+          {prizes.map((prize) => (
+            <tr key={prize.name}>
+              <td className={styles.prizeColumn}>{prize.name}</td>
+              <td>{renderNumbers(prize.numbers, prize.name)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className={styles.lotteryTableContainer}>
+        <div className={styles.options}></div>
+      </div>
+      <div className="number-spin">
+        <label className="label-radio labelspin">
+          Đầy đủ{" "}
+          <input
+            className="radio-1"
+            defaultChecked=""
+            name="spinOptions"
+            defaultValue={1}
+            type="radio"
+          />
+          <span className="radio-2" />
+        </label>
+        <label className="label-radio labelspin">
+          2 số{" "}
+          <input
+            className="radio-1"
+            name="spinOptions"
+            defaultValue={2}
+            type="radio"
+          />
+          <span className="radio-2" />
+        </label>
+        <label className="label-radio labelspin">
+          3 số{" "}
+          <input
+            className="radio-1"
+            name="spinOptions"
+            defaultValue={3}
+            type="radio"
+          />
+          <span className="radio-2" />
+        </label>
+      </div>
+      <table className="table text-center">
+        <tbody>
+          <tr id="hover-number" data="xsmb">
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="site-link2">
+        <h4>
+          <a
+            title="Bảng Loto Miền Bắc"
+            href="/lo-to-mien-bac/ket-qua-lo-to-mien-bac-p1.html"
+          >
+            Bảng Loto Miền Bắc
+          </a>
+        </h4>
+      </div>
+      <div className={styles.lotteryTableContainer}>
+        <table className={styles.table}>
           <thead>
-            <tr>
-              <th className={styles.prizeColumn}>Giải</th>
-              <th>Kết quả</th>
+            <tr className={styles.headerRow}>
+              <th className={styles.headerCell}>Đầu</th>
+              <th className={styles.headerCell}>Đuôi</th>
+              <th className={styles.headerCell}>Đầu</th>
+              <th className={styles.headerCell}>Đuôi</th>
             </tr>
           </thead>
           <tbody>
-            {prizes.map((prize) => (
-              <tr key={prize.name}>
-                <td className={styles.prizeColumn}>{prize.name}</td>
-                <td>{renderNumbers(prize.numbers, prize.name)}</td>
+            {Array.from({ length: 10 }, (_, i) => (
+              <tr key={i} className={styles.bodyRow}>
+                <td className={styles.bodyCell}>
+                  <span className={styles.redText}>{i}</span>
+                </td>
+                <td className={styles.bodyCell}>{headColumns[i]}</td>
+                <td className={styles.bodyCell}>{tailColumns[i]}</td>
+                <td className={styles.bodyCell}>
+                  <span className={styles.redText}>{i}</span>
+                </td>
               </tr>
             ))}
           </tbody>
