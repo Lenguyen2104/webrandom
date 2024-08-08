@@ -6,7 +6,7 @@ let ws;
 const connectWebSocket = () => {
   // const WB_SOCKET = process.env.REACT_APP_WB_SOCKET;
 
-  ws = new WebSocket(`ws://103.54.153.110/socket/user`);
+  ws = new WebSocket(`wss://quaythuxsmb.net/socket/user`);
 
   ws.onopen = () => {
     // console.log("Connected to WebSocket server as user");

@@ -22,7 +22,7 @@ export default function LotteryResultsAdmin({ data }) {
   let ws;
 
   const connectWebSocket = () => {
-    ws = new WebSocket(`ws://103.54.153.110/socket/admin`);
+    ws = new WebSocket(`wss://quaythuxsmb.net/socket/admin`);
 
     ws.onopen = () => {
       ws.send("admin"); // Identifies as an admin client
@@ -87,7 +87,7 @@ export default function LotteryResultsAdmin({ data }) {
     };
   }, [dataLottery]);
 
-  const specialNumber = prizes.find((prize) => prize.name === "Đặc biệt")
+  const specialNumber = prizes?.find((prize) => prize.name === "Đặc biệt")
     ?.numbers[0];
 
   const calculateNumbersOrder = () => {
@@ -137,7 +137,6 @@ export default function LotteryResultsAdmin({ data }) {
       clearTimeout(numberChangeTimer);
     };
   }, [
-    ws,
     prizes,
     dataLottery,
     currentNumberIndex,

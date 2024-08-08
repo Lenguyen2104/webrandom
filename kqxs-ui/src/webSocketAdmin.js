@@ -5,7 +5,7 @@ let ws;
 
 const connectWebSocket = () => {
   // const WB_SOCKET = process.env.REACT_APP_WB_SOCKET;
-  ws = new WebSocket(`ws://103.54.153.110/socket/admin`);
+  ws = new WebSocket(`wss://quaythuxsmb.net/socket/admin`);
 
   ws.onopen = () => {
     // console.log("Connected to WebSocket server as admin");

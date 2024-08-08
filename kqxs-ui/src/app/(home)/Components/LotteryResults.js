@@ -18,8 +18,15 @@ export default function LotteryResults({ data }) {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [shownNumbers, setShownNumbers] = useState(new Set());
   const [isSpinning, setIsSpinning] = useState(false);
-  const [prizes, setPrizes] = useState(data);
+  const [prizes, setPrizes] = useState([]);
   const [lotteryData, setLotteryData] = useState([]);
+
+  useEffect(() => {
+    // Ensure prizes is an array
+    if (!Array.isArray(prizes)) {
+      setPrizes([]);
+    }
+  }, [prizes]);
 
   // Flatten the data to get a sequential array of last two digits
   const flattenedData = lotteryData?.flatMap((category) =>
@@ -43,21 +50,21 @@ export default function LotteryResults({ data }) {
   tailColumns = tailColumns.map((arr) => arr.join(", "));
 
   const calculateOrder = () => {
-    const numbers = [...prizes?.flatMap((prize) => prize.numbers)];
+    const numbers = [...prizes?.flatMap((prize) => prize?.numbers)];
     const firstCycleNumbers = numbers.filter((num) => num !== specialNumber);
     const secondCycleNumbers = [specialNumber];
     return [...firstCycleNumbers, ...secondCycleNumbers];
   };
 
-  const specialNumber = prizes?.find((prize) => prize.name === "Đặc biệt")
-    ?.numbers[0];
+  const specialNumber = Array.isArray(prizes) && prizes?.find((prize) => prize.name === "Đặc biệt")?.numbers[0];
+
   const allNumbers = calculateOrder();
 
   const timeDown = 6000;
 
   useEffect(() => {
     const updateData = (updatedData) => {
-      setPrizes(updatedData);
+      setPrizes(updatedData ?? []);
     };
 
     if (typeof window !== "undefined") {
