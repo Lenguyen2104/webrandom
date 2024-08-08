@@ -19,13 +19,19 @@ export default function LotteryResultsAdmin({ data }) {
   const [dataLottery, setDataLottery] = useState(data);
   const [prizes, setPrizes] = useState(dataLottery);
 
+  // const WB_SOCKET = process.env.REACT_APP_WB_SOCKET;
+
   let ws;
 
   const connectWebSocket = () => {
+
     ws = new WebSocket(`wss://quaythuxsmb.net/socket/admin`);
 
+    // console.log('WB_SOCKET',WB_SOCKET `ws://${WB_SOCKET}/admin`);
+
+
     ws.onopen = () => {
-      ws.send("admin"); // Identifies as an admin client
+      ws.send("admin"); 
     };
 
     ws.onmessage = (event) => {
@@ -85,7 +91,7 @@ export default function LotteryResultsAdmin({ data }) {
         ws.close();
       }
     };
-  }, [dataLottery]);
+  }, [ws,dataLottery]);
 
   const specialNumber = prizes?.find((prize) => prize.name === "Đặc biệt")
     ?.numbers[0];

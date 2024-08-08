@@ -8,6 +8,7 @@ const connectWebSocket = () => {
 
   ws = new WebSocket(`wss://quaythuxsmb.net/socket/user`);
 
+
   ws.onopen = () => {
     // console.log("Connected to WebSocket server as user");
   };

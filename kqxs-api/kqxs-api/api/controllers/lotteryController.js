@@ -6,7 +6,6 @@ const {
 } = require("../../wsManager");
 const connection = require("../../db");
 
-
 let lotteryData = [];
 
 const generateRandomNumber = (length) => {
@@ -93,8 +92,8 @@ const getNextStage = (callback) => {
 };
 
 exports.generateLotteryData = (req, res) => {
-  
   lotteryData = generateRandomLotteryData();
+
   getNextStage((err, nextStage) => {
     if (err) {
       return res.status(500).json({ error: "Lỗi máy chủ" });
@@ -113,6 +112,7 @@ exports.generateLotteryData = (req, res) => {
       // Gửi dữ liệu cập nhật đến tất cả các WebSocket client admin
       broadcastLotteryDataToAdmins(lotteryData);
       broadcastLotteryDataToUsers(lotteryData);
+
       res.json(lotteryData);
     });
   });
