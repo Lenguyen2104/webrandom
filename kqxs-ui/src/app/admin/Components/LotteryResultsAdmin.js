@@ -22,7 +22,7 @@ export default function LotteryResultsAdmin({ data }) {
   let ws;
 
   const connectWebSocket = () => {
-    ws = new WebSocket("ws://localhost:3002/admin");
+    ws = new WebSocket(`ws://103.54.153.110/socket/admin`);
 
     ws.onopen = () => {
       ws.send("admin"); // Identifies as an admin client
