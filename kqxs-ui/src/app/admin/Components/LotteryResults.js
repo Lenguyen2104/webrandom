@@ -62,7 +62,7 @@ export default function LotteryResults({ data }) {
     };
   }, []);
 
-  const specialNumber = prizes.find((prize) => prize.name === "Đặc biệt")
+  const specialNumber = prizes?.find((prize) => prize.name === "Đặc biệt")
     ?.numbers[0];
 
   const calculateNumbersOrder = () => {
@@ -169,7 +169,7 @@ export default function LotteryResults({ data }) {
     setPrizes(updatedPrizes);
     setEditingNumber(null);
 
-    const prizeName = prizes.find((prize) =>
+    const prizeName = prizes?.find((prize) =>
       prize.numbers.includes(editingNumber)
     ).name;
 

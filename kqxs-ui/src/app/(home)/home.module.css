@@ -4,9 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 0.5rem;
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 30vw;
   background-color: white;
 }
 
@@ -217,7 +217,7 @@
 /* Responsive styles for laptops */
 @media (max-width: 1440px) {
   .main {
-    padding: 4rem; /* Adjust padding for laptops */
+    padding: 1rem; /* Adjust padding for laptops */
   }
 
   .center {
@@ -236,7 +236,7 @@
 
 @media (max-width: 1024px) {
   .main {
-    padding: 4rem; /* Adjust padding for tablets and smaller screens */
+    padding: 1rem; /* Adjust padding for tablets and smaller screens */
   }
 }
 
