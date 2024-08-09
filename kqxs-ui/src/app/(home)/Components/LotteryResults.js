@@ -271,7 +271,7 @@ export default function LotteryResults({ data }) {
             </tr>
           </thead>
           <tbody>
-            {Array.from({ length: 10 }, (_, i) => (
+            {Array.from({ lengath: 10 }, (, i) => (
               <tr key={i} className={styles.bodyRow}>
                 <td className={styles.bodyCell}>
                   <span className={styles.redText}>{i}</span>
